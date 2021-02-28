@@ -1,0 +1,56 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'cn.aulang.pdf'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven {
+        url 'https://maven.aliyun.com/repository/public'
+    }
+
+    maven {
+        credentials {
+            username 'mUG1Lz'
+            password 'Xw5RtNA0MC'
+        }
+        url 'https://repo.rdc.aliyun.com/repository/51853-release-C1fBb4/'
+    }
+    maven {
+        credentials {
+            username 'mUG1Lz'
+            password 'Xw5RtNA0MC'
+        }
+        url 'https://repo.rdc.aliyun.com/repository/51853-snapshot-s3ikOa/'
+    }
+}
+
+dependencies {
+    implementation(
+            'org.springframework.boot:spring-boot-starter',
+            'org.bouncycastle:bcprov-jdk15on:1.68',
+            'org.bouncycastle:bcpkix-jdk15on:1.68',
+            'com.itextpdf:itext7-core:7.1.14',
+            'commons-io:commons-io:2.8.0'
+    )
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor(
+            'org.projectlombok:lombok',
+            'org.springframework.boot:spring-boot-configuration-processor'
+    )
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+test {
+    useJUnitPlatform()
+}
